@@ -1,0 +1,66 @@
+"""First orders"""
+
+When you open a terminal or a console, you will see several things by default:
+
+username: the name of the user you are using;
+( @ )  : a separator announcing the name of the machine you are using;
+machine_name: the name of the machine you are using;
+( : ): a separator announcing the path to where you are;
+( ~ ) : the path to where you are;
+( $ ) : a separator indicating the rights you have at this time.
+If the user is actually the superuser, i.e., the root user, then the $ is replaced by # .
+
+By default, for a normal user, the terminal opens at /home/username usually simplified to ~ for the username user.
+
+- pwd To check where you are, you can enter the  command (which stands for print working directory):
+This command should return: **(/home/ubuntu)**
+
+-  ls To return the contents of a folder, you can use the  command
+-  ls / To see the contents of the /usr/bin folder, you can do:
+to show directory contents : ls /usr/bin.
+
+- We could have used other options:
+
+ls -a : to list all files, even hidden files (in these systems, just add a . to the beginning of a file name to make it hidden)
+
+ls -l : to add file information (rights, size, ...)
+
+ls -R : to list files recursively in subfolders
+
+ls -h : to display file sizes in a human-readable format
+ls --help : display  the function help:
+man ls : when we want to get information about a shell command
+
+(.)
+(..)
+These two things actually represent the current folder and the parent folder. 
+Thereby (.) is a representation of /home/ubuntu and (..) is a representation of /home . 
+This allows us to use the relative path: to indicate a file or a folder, we can use 
+the absolute path from the root / or the relative path from the folder where we are. 
+For example, since we are in /home/ubuntu, we can list the contents of the parent /home folder using:
+ls .. or we can list the contents of the usr/bin using ls ../../usr/bin
+
+- cd which stands for change directory.
+- cd / Go to the root of the system from [(venv) ali-z@LAPTOP-UHJD79D8:~$] to [(venv) ali-z@LAPTOP-UHJD79D8:/$]
+- cd /usr/bin Go to usr/bin [(venv) ali-z@LAPTOP-UHJD79D8:/usr/bin$]
+- cd .. to go back --> [(venv) ali-z@LAPTOP-UHJD79D8:/usr$]
+- cd or cd~ to go back home [(venv) ali-z@LAPTOP-UHJD79D8:~$]
+---------------------------------------------------------------------------------------------------------------------------------
+"""Environment variables"""
+
+Environment variables are a way to influence the behavior of software on your system. 
+
+For example, the LANG environment variable determines the language software uses to communicate with the user.
+
+Variables consist of names to which values ​​are assigned.
+
+- export NOM=VALEUR  , example : export value=DATA
+- Read existing environment variables
+The value of the variable can also be retrieved by using the echo $ sign in front of its name, as in the following example:
+- echo $value --> DATA
+
+- We also have the printenv command which displays the names and values ​​of all defined environment variables.
+- unset command can be used to completely remove an environment variable:
+- (venv) ali-z@LAPTOP-UHJD79D8:~$ unset value
+
+---------------------------------------------------------------------------------------------------------------------------------

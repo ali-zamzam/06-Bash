@@ -1,0 +1,38 @@
+"""Crontab"""
+
+- It is a process that automatically performs tasks according to a specific schedule. 
+It is a set of commands that are used to perform regular scheduling tasks.
+
+- **Crontab** is often used for automating tasks such as **managing logs**, **cleaning data in the cache**, 
+**sending newsletter emails** or even **automating your data scraping script**.
+
+
+***Syntax of a Cron job***
+
+* * * * * command/script 
+
+- From left to right :
+
+- The first * stands for Minutes (0-59);
+- The second * stands for Hours (0-23);
+- The third * corresponds to the Day of the month (1-31);
+- The fourth * corresponds to the Month of the year (1-12);
+- The fifth * corresponds to the Day of the week (0-6, from Sunday to Saturday).
+
+
+15 5 * * * command/script
+15 5 2 * * command/script
+0 */5 * * * command/script
+0 0 * jan,feb mon,wed command/script
+
+
+***Create the following cron.sh script:***
+
+
+
+Common commands
+crontab -e: To edit the current user's crontab file;
+crontab -l: To display the contents of the crontab file;
+crontab -u [username]: To edit another user's crontab file;
+crontab -r: To delete the current user's crontab file;
+crontab -i: To prompt before deleting the current user's crontab file.

@@ -1,0 +1,116 @@
+"""Users and rights"""
+
+Linux divides authorization into 2 levels: Ownership (users) and Permissions (rights).
+
+--------------------------------------------------------------------------------------------------------------------------------
+**Super user and sudo (root)**
+
+connect as super user, You will notice that the command prompt has changed: the usual $ has been changed to #
+
+- sudo su 
+
+we will notice that the cd command no longer returns to /home/ubuntu but to /root
+
+
+exit the super user mode
+
+- exit
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+List the items available at root / using the -l argument:
+
+- ls -l /
+
+
+The outputs should look like this:
+
+-rw-rw-r-- 1 ubuntu ubuntu 133 Apr 12 11:10 file
+
+You can see different parts.
+
+- -rw-rw-r--: list object permissions
+- 1 : number of links to this object
+- ubuntu: owner username
+- ubuntu: owner's user group name
+- 133: object size
+- Apr 12 11:10: last modified date
+- file: object name.
+
+output from my bash linux:
+
+lrwxrwxrwx   1 root root      7 Feb 20  2021 bin -> usr/bin
+drwxr-xr-x   2 root root   4096 Feb 20  2021  boot
+drwxr-xr-x   9 root root   2820 Sep 20 15:04  dev
+drwxr-xr-x  96 root root   4096 Sep 20 15:58  etc
+drwxr-xr-x   3 root root   4096 Mar 20  2021  home
+-rwxr-xr-x   3 root root 632096 Mar  5  2022  init
+
+
+- (-)  : This first part corresponds to the nature of the object: 
+
+drwxr-xr-x
+- d for a folder, - for a file, l for a link...;
+
+- rwx: corresponds to the permissions granted to the owner of the object;
+
+- r-x: corresponds to the permissions granted to users who belong to the same group as the owner of the object;
+
+- r-x: corresponds to the permissions granted to other users.
+
+These permissions look a bit complicated but in reality the letters indicate permission is granted 
+while (-) indicates permission is not granted. Thus, we can have the following letters:
+
+- r: read rights: 
+- w: write permissions: 
+- x: execution rights: 
+- d: information about whether it is a folder or not: 
+
+r = 4
+w = 2
+x = 1
+
+--- 0
+r-- 4
+-w- 2
+--x 1
+rw- 6
+-wx 3
+r-x 5
+rwx 7
+
+-rwx---r-x = 705
+--------------------------------------------------------------------------------------------------------------------------------
+
+"""Permission change"""
+
+- chmod :To change the permissions of a file.
+
+
+The first way is to use a binary representation of the permissions: 
+each number corresponds to a group of users as seen previously when reading the rights.
+
+- chmod 777 file
+
+0 : ---
+1 : --x
+2 : -w-
+3 : -wx
+4 : r--
+5 : r-x
+6 : rw-
+7 : rwx
+
+
+The second way is to designate the group or groups to which you want to assign or remove rights:
+
+
+- chmod a+rwx file
+
+a: the users concerned by the modification a for all (all), u for the owner, g for the user's group o for the other users;
+
++: do we give or take away rights: + to give and - to take away;
+
+rwx: The rights to add or remove.
+
+Finally, note that to modify the rights of a file, you must be the owner or use the superuser.

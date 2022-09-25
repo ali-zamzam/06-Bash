@@ -1,0 +1,210 @@
+"""File and folder creation"""
+
+
+** create an empty file **
+
+- touch :  we use this command and specify a filename.
+If this file already exists, this only updates it to its last modified date.
+
+example:
+In the home folder (~), create the files file1, file2, file3 and check their existence using ls .
+
+- touch file1
+- or touch  file1 file2 file3
+
+------------------------------------------------------------------------------------------------------------
+**create a directory**
+
+- mkdir :you can use the mkdir command (which means make directory) 
+by specifying a name for this folder:
+
+example:
+
+- mkdir directory1
+
+
+We can also create files and folders outside the current folder using the absolute or relative path: 
+for example, we can run the following command:
+
+touch ./directory1/file5
+
+-----------------------------------------------------------------------------------------------------------
+
+** enter a directory **
+
+cd name of directory to enter the directory
+
+- cd directory1
+- ls to see what in the directory
+
+-----------------------------------------------------------------------------------------------------------
+
+** delete a directory: **
+
+- rm -r /home/ali-z/directory1 
+
+if we are in the main folder
+- rm -r (name of folder)
+
+-----------------------------------------------------------------------------------------------------------
+
+** delete a file: **
+
+- rm file
+
+- or rm ./file
+
+- or rm /home/ali-z/file
+
+if we create a directory dir1 for example
+
+- rm ./dir1/file
+
+or we enter to the directory and we delete the File
+- rm file
+-----------------------------------------------------------------------------------------------------------
+** copy file in directory **
+
+we had the file3 and the directory 1 we can copy the file using cp :
+- cp ./file3 ./directory1/
+
+or we can copy and give a new name to the file 
+
+- cp ./file3 ./directory1/new_file3
+
+cp path for the first directory path for the second directory
+
+- cp /home/ali-z/dir2/file /home/ali-z/dir1/
+
+or
+cp path for the first directory path for the second directory the new name of file
+
+- cp /home/ali-z/dir2/file /home/ali-z/dir1/new
+-----------------------------------------------------------------------------------------------------------
+
+** move the contents **
+
+to move the contentsof directory to another directory
+
+all contents of the directory
+
+- mv dir1/* dir2
+
+one file
+
+mv path for the first directory path for the second directory
+
+- mv /home/ali-z/dir2/file /home/ali-z/dir1/
+
+-----------------------------------------------------------------------------------------------------------
+"""write on a file in diectory"""
+
+we use this command
+
+echo (what we want to write) > name of file
+
+- echo hello ali > file  we will have just on line
+
+or 
+
+to have multi lines we use this multi times
+
+- echo hello ali >> file
+
+to see what we wrote we use cat with the name of file:
+
+- cat file 
+
+
+
+if we use ls /
+
+output
+bin   dev  home  lib    lib64   lost+found  mnt  proc  run   snap  sys  usr
+boot  etc  init  lib32  libx32  media       opt  root  sbin  srv   tmp  var
+
+so if we want to stock the output in a new file
+
+ls / > root_content (root_content is the name of the file)
+
+now we had a too large file so we can use this
+
+to display : 
+head -n number of lines name of file
+
+- head -n 3 root_content
+or
+- tail -n 3 root_content
+or
+- head < file 
+ 
+-----------------------------------------------------------------------------------------------------------
+
+"""My first text editor: Nano"""
+
+to open nano
+
+- nano
+
+to close it we use keyboard:
+
+- ctrl + x
+
+
+Finally, note that to modify an existing file, we can do: 
+
+- nano file_name
+-----------------------------------------------------------------------------------------------------------
+When we use a command in the terminal, the response is displayed in the standard output stream. 
+It is however possible to redirect these streams to other places, like to redirect the error stream 
+to a text file,for example.
+
+- cat no_file
+- cat no_file 2> errors_file
+- head errors_file
+
+
+For example, create the name.py file with the following lines:
+
+- nano name.py
+name = input("Entrez votre nom\n")
+print("Bonjour {} !".format(name))
+
+
+Then write Daniel to a file firstname via standard output.
+
+- echo Daniel > prenom
+
+- python3 nom.py < prenom
+
+output = Bonjour Daniel
+
+if we dont use that python3 nom.py < prenom so we will input the name when we execute the script
+
+--------------------------------------------------------------------------------------------------------------------------------
+"""pipe operator"""
+
+This operator is very interesting because it allows instructions to be chained together. 
+The | takes the output of one command and uses it as input for another command.
+
+
+The ls / command displays the contents of the root. 
+The grep function is a very useful function that allows you to filter the lines that contain the following expression
+
+- ls / | grep bin
+output
+bin
+sbin
+
+- ls / | grep bin | head -n 1
+output
+bin
+
+There is another operator && which only allows him to chain commands, without linking them.
+
+ls -l && python3 --version && mkdir Test
+--------------------------------------------------------------------------------------------------------------------------------
+
+https://devconnected.com/how-to-check-if-file-or-directory-exists-in-bash/
+
+

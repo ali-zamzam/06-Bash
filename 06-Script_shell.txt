@@ -1,0 +1,271 @@
+"""Script Shell"""
+
+- Bash is a language installed by default on Linux machines and is used to control file manipulation.
+
+- Run Bash scripts:
+A Bash script is a simple file containing lines of code written in Bash that can be executed. 
+It contains at its base, a **shebang**, which corresponds to an indicator of the location of the shell 
+which must be used to execute the code and is presented in this form:
+
+- #!/bin/bash
+
+Open a file named **script.sh** with **nano**. Add the corresponding Bash shebang and another line 
+that lists the contents of the / directory. Then quit editing the file and save it.
+
+nano script.sh
+
+#!/bin/bash
+ls /
+
+we can execute the file using
+- bash script.sh
+
+or
+- ./script.sh   # we should had an error because you don't have permission to execute this file.
+
+- so we can change permissions 
+
+chmod u+rwx script.sh (u for owner rwx read write execute)
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+"""Base of Bash"""
+
+we can comment using # 
+
+in the script.sh
+- we can use # to comment (#ls /)
+
+**Define a variable**
+
+To define a variable, we can **use = **. For example, we can define the variable my_variable as follows:
+
+- var1=hello
+
+to print the content of variable we use **echo** but that can be done(we must use $)
+
+- echo $var1
+
+
+my_variable="hello world"
+echo $my_variable
+
+output :hello world
+
+**if we use simple quotes ('')**
+
+- echo 'the content of my variable is $my_variable'
+
+output: the content of my variable is $my_variable
+
+**if we use double quotes ("")**
+
+- echo "the content of my variable is $my_variable"
+
+output: the content of my variable is hello world
+
+my_variable='ls -l'
+- echo $my_variable
+
+output: ls -l
+
+-------------------------------------------------------------------------------------------------------------------------------------
+"""Math operations"""
+
+- let :we use this for Math operations
+
+let "a=1"
+let b=2
+let "c=b"
+let "d = a + b * c"
+
+- echo $d   # output : 5
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+"""array"""
+
+my_array=(hello world)
+
+- echo ${my_array[0]}   #output : hello
+
+my_array[0]=Hi
+
+- echo ${my_array[0]}   #output : hi
+
+
+*** to return the full array, we just replace the index with (*) .***
+
+- echo ${my_array[*]}  #output : hi world
+
+** to add a variables to the array**
+- my_array[2]=or
+- my_array[4]=hello
+- my_array[1000]=world
+
+- echo ${my_array[*]}   #output : hi world or hello world
+
+***we don't need to respest the number of index** (we use index 1000 for the 5th variable)
+
+- echo ${!my_array[*]}  returns the element indexs.
+
+- echo ${#my_array[*]}  returns the number of elements.
+
+-------------------------------------------------------------------------------------------------------------------------------------
+"""Loops and if condition"""
+
+prenom="Daniel"
+if [ $prenom = "Daniel" ]
+then
+echo "Salut Daniel !"
+fi
+
+
+
+Name="Ali"
+if [ $Name = "Daniel" ]
+then
+echo "Salut Daniel !"
+else 
+echo "Bonjour + $Name + !"
+fi
+
+- output: Bonjour Ali
+
+
+
+prenom="Diane"
+if [ $prenom = "Daniel" ]
+then
+echo "Salut Daniel ! "
+elif [ $prenom = "Diane" ]
+then
+echo "Salut Diane"
+else
+echo "Bonjour" $prenom "!"
+fi
+
+output: salut Diane
+-------------------------------------------------------------------------------------------------------------------------------------
+
+- We can use many elements to create a condition:
+
+$var1 = $var2 tests character arrays for equality;
+$var1 != $var2 tests character arrays for inequality;
+-z $variable tests if the character array is empty;
+-n $variable tests if the character array is not empty;
+$var1 -eq $var2 tests numeric values ​​for equality;
+$var1 -ne $var2 tests for inequality of numeric values;
+$var1 -gt $var2 tests var1 > var2;
+$var1 -lt $var2 tests var1 < var2;
+$var1 -ge $var2 test var1 >= var2;
+$var1 - the $var2 tests var1 <= var2 .
+
+
+
+prenom="Diane"
+nom="Datascientest"
+if [ prenom="Daniel" ] && [ nom="Datascientest" ]
+then
+echo "Bonjour Daniel Data"
+else
+echo "Bonjour" + $prenom + $nom
+fi
+
+output: Bonjour Diane Datascientist
+
+-------------------------------------------------------------------------------------------------------------------------------------
+"""For loop"""
+
+for x in '1st iteration' '2nd iteration' '3rd iteration'
+do
+echo $x
+done
+
+output:
+1st iteration 
+2nd iteration 
+3rd iteration
+
+-------------------------------------------------------------------------------------------------------------------------------------
+"""while loop"""
+
+x=1
+while [ $x -le 5 ]
+do
+echo "Welcome $x times"
+x=$(( $x + 1 ))
+done
+
+output:
+Welcome 1 times
+Welcome 2 times
+Welcome 3 times
+Welcome 4 times
+Welcome 5 times
+
+
+i = 1
+while [ $i -le 10 ]
+> do
+> let "i=i+1"
+> done
+
+echo $i  #output = 11
+
+
+i = 0
+while [ $i -lt 10 ]
+> do
+> let "i=i+1"
+> done
+
+echo $i  #output = 10
+-------------------------------------------------------------------------------------------------------------------------------------
+"""seq"""
+
+
+An interesting function for these loops is seq. This function provides a sequence of integers 
+from a start integer to an end integer as follows:
+
+- seq 3 7
+
+output
+3
+4
+5
+6
+7
+-------------------------------------------------------------------------------------------------------------------------------------
+"""Functions"""
+
+There are two ways to define a function:
+
+my_function () {
+echo "Nous pouvons faire quelque chose ici"
+}
+
+
+function my_function {
+echo "Nous pouvons faire quelque chose ici"
+}
+
+
+function my_function {
+echo "Premier argument"
+echo $1
+echo "Second argument"
+echo $2
+}
+
+my_function "Daniel" "24"
+
+output :
+Premier argument
+Daniel
+Second argument
+24
+
+-------------------------------------------------------------------------------------------------------------------------------------
+
+

@@ -1,0 +1,48 @@
+"""on vs code"""
+
+- download remote ssh extension
+- click on the ssh icon (like a computer screen)
+- click on +
+- in the window that opend we input (ssh ubuntu@IP of the machine)
+- C:/Users/Ali/.ssh/config ( the path plus .ssh/config)
+- in the config fil we see:
+
+Host 52.30.172.188   # the ip
+  HostName 52.30.172.188   # the ip
+  IdentityFile ~/Desktop/your-key.pem   # the path of our ssh key file
+  User ubuntu            # the name of the os
+
+- if the ip of the machine changed we must modify the config file
+- open the terminal to connect to the server
+
+
+"""on windows"""
+
+- open Cmd (invite de commands)
+- download the ssh key
+- if we have the ssh key on Downloads directory so we need to use:
+- cd Downloads
+- ssh -i"your-key.pem" ubuntu@X.X.X.X (X.X.X.X = IP of machine)
+
+
+
+"""on ubuntu"""
+- download the file which  contains the ssh key
+- mkdir a directory (choose a name)
+- cd (name of directory)
+- touch key_file.txt
+- paste the ssh key in the file
+- $ ssh  to see the ssh key
+- if we can't acess the file we use chmod 400 key_file.txt (400 gave us  the read rights r-- )
+- ssh -i "key_file" ubuntu@X.X.X.X # replace X.X.X.X with your virtual machine's public IP address
+
+
+"""or on gitbash"""
+
+- pwd
+- mkdir a directory (choose a name)
+- cd (to the path of file ( desktop if we download it on desktop for example))
+- ls | grep name of the file.pem
+- chmod 400 (name of the file)
+- ssh
+- ssh -i "name of the file" ubuntu@X.X.X.X # replace X.X.X.X with your virtual machine's public IP address

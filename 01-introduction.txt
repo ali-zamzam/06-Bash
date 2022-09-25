@@ -1,0 +1,92 @@
+"""Linux and Bash - Introduction to Linux"""
+
+****
+first thing to do connect venv ** source venv/bin/activate **
+****
+"""System Architecture"""
+
+* The data of a Linux system is distributed according to a tree structure. 
+* Thus, if a folder folder1 contains two subfolders subfolder1 and subfolder2, 
+the structure of these folders can be represented as follows:
+
+folder1
+
+- subfolder1
+- subfolder2
+
+
+And if the subfolder1 folder contains the files file1 and file2, the structure becomes:
+
+folder1
+
+- subfolder1
+- - file1
+- - file2
+- subfolder2
+
+in particular, the system architecture starts at the root designated by the symbol ( / ).
+
+In this directory, we find the following subdirectories:
+
+/bin: contains the essential binary files (Bash shell, files manipulation, ...);
+
+/boot: contains the files needed to start the system;
+
+/cdrom: temporary directory used for CD-ROMs;
+
+/dev: contains special files for some tools (console, stdout, ...);
+
+/etc: contains system configuration files;
+
+/home: contains user data files;
+
+/lib: contains the libraries needed to run the binary files contained in /bin and /sbin;
+
+/lost+found: contains files corrupted after a system crash;
+
+/media: contains the location of temporary external folders (USB key, ...);
+
+/mnt: contains mounted directories;
+
+/opt: contains some files that do not respect the classic file hierarchy;
+
+/proc: contains system information;
+
+/root: home folder for the root user;
+
+/run: contains temporary files used by programs that should NOT be deleted;
+
+/sbin: contains binaries used by the root user;
+
+/srv: contains the data necessary for processes that provide services (web files for example, ...);
+
+/tmp: contains temporary files used by processes that can be deleted (they are usually deleted on each restart);
+
+/usr: contains applications for users. This directory is then divided into /bin, /lib...
+ which have the same use as / but with user applications;
+
+/var: contains log files.
+
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

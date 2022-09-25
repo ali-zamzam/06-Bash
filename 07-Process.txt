@@ -1,0 +1,59 @@
+Let's imagine that the following Python script allows webscraping. 
+Every second it fetches data and writes it to the data.txt file.
+
+
+- Copy this script into a webscraping.py file and run.
+import time
+i = 0
+while i < (60 * 20):
+    fichier = open("data.txt", "a")
+    fichier.write(str(i) + "\n")
+    fichier.close()
+    i += 1
+    time.sleep(1)
+
+- $ python3 webscraping.py
+****************************************
+***to stop the precess ctrl+z***
+****************************************
+
+Foreground Layout
+We might want to put a process in the foreground for this you can use the fg command. 
+Run the command to see that it works well and then pause again.
+
+Background
+As you can imagine, the command to put it in the background is bg. 
+Thanks to this, the process continues to run, leaving the terminal in your hands.
+
+[1]+ python3 webscraping.py &
+The line above should appear. We observe the & character following our execution command. To generalize, 
+if we want to launch a script directly in the background, we just need to add & after our command.
+
+Additional tools
+There are different commands to get information about running processes:
+
+Top
+This utility informs the user about all processes running on the Linux machine. 
+Launch the htop command, a lot of information is displayed in front of you. And yes ! Many processes are running without your knowledge in order to make your system work. Explore the tool to find our process which must certainly be running via the man command.
+
+Press q on your keyboard to exit the htop process display.
+
+PS
+This command stands for "Process Status". This command is similar to the htop command but the 
+information displayed is different.
+
+To check all processes running under a user, use the ps ux command. This makes it easier to observe
+ the information concerning the processes launched by ourselves.
+
+PID
+With the previous tools, one of the information concerning our process is the PID for Process ID. 
+This identifier allows us to interact directly with the process. For example, you can do a ps PID 
+to only have the information of the process concerned, or you can decide to end the process.
+
+To easily find the PID of a process you can use the command pidof Process_Name. 
+In our example: pidof python3 webscraping.py
+
+Terminate the process: Kill
+The kill command terminates processes running on a Linux machine. To use it, you need to know 
+the PID (process id) of the process you want to kill and run the kill PID command.
+
